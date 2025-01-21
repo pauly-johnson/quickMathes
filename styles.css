@@ -25,3 +25,6 @@ body {
 .quiz {
     display: none;
 }
+.resultsDisplay {
+    display: none;
+}
