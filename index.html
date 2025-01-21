@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>How good is your mathes</h1>
+        <div class="operators">
+            <p>Select your operator</p>
+            <button class="operator-btn" id="addition" value="+">+</button>
+            <button class="operator-btn" id="subtraction" value="-">-</button>
+            <button class="operator-btn" id="multiplication" value="*">*</button>
+            <button class="operator-btn" id="division" value="/">/</button>
+        </div>
+        <div class="questions">
+            <p>How many questions do you want to answer?</p>
+            <input type="number" id="questionsNum" value="0" placeholder="Enter number of questions">
+            <button id="start">Start</button>
+        </div>
+        <div></div>
+        <div class="quiz">
+            <p class="question"></p>
+            <input type="number" id="userAnswer" placeholder="Enter your answer">
+            <button id="next">Next</button>
+            <p id="messageDisplay"></p>
+            <h2><span id="questionsCompleted">3</span>/<span id="questionsTotal">10</span></h2>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
