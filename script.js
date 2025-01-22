@@ -7,6 +7,7 @@ const questionsCorrect = document.getElementById("questionsCompleted");
 const questionsTotal = document.getElementById("questionsTotal");
 const messageDisplay = document.getElementById("messageDisplay");
 const timerDisplay = document.getElementById("timerDisplay");
+const userAnswerInput = document.getElementById("userAnswer");
 
 let operator = "";
 let pram1 = 0;
@@ -80,12 +81,12 @@ function generateQuestion() {
         pram2 = Math.floor(Math.random() * 100);
       }
     } else if (operator === "-") {
-      while (pram1 < pram2 || pram1 === 0 || pram2 === 0) {
+      while (pram1 < pram2 || pram1 === 0 || pram2 === 0 || pram1 === pram2) {
         pram1 = Math.floor(Math.random() * 100);
         pram2 = Math.floor(Math.random() * 100);
       }
     } else if (operator === "*") {
-      while (pram1 === 0 || pram2 === 0 || pram1 > 14) {
+      while (pram1 === 0 || pram2 === 0 || pram1 > 14 || pram2 > 14 || pram1 === 1) {
         pram1 = Math.floor(Math.random() * 100);
         pram2 = Math.floor(Math.random() * 100);
       }
@@ -101,19 +102,31 @@ function generateQuestion() {
   }
 }
 //next question
-document.getElementById("next").addEventListener("click", () => {
+function handleNextQuestion() {
   checkResult();
-  if (result === parseFloat(document.getElementById("userAnswer").value)) {
+  console.log(result, parseFloat(userAnswerInput.value));
+  
+  if (result === parseFloat(userAnswerInput.value)) {
     questionsCorrect.innerHTML = parseFloat(questionsCorrect.innerHTML) + 1;
     messageDisplay.innerHTML = "Correct !!! Great work";
-    questionsAttempted++;
-    generateQuestion();
   } else {
     messageDisplay.innerHTML = "Incorrect !!! Good try";
-    questionsAttempted++;
-    generateQuestion();
   }
+  questionsAttempted++;
+  generateQuestion();
+}
+
+document.getElementById("next").addEventListener("click", () => {
+  handleNextQuestion();
+  userAnswerInput.value = "";
 });
+userAnswerInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    handleNextQuestion();
+    userAnswerInput.value = "";
+  }
+})
+
 //check result
 function checkResult() {
   if (operator === "+") {

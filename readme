@@ -1,34 +1,44 @@
-# Quick Maths
+# QuickMathes
 
-A brief description of what this project does and who it's for.
+Welcome to QuickMathes! This project is designed to help you perform quick and efficient mathematical calculations.
 
-## Installation
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/yourusername/quickMathes.git
-   ```
-2. Navigate to the project directory:
-   ```sh
-   cd quickMathes
-   ```
-3. Open the project in Visual Studio Code:
-   ```sh
-   code .
-   ```
-4. Install the necessary dependencies:
-   ```sh
-   npm install
-   ```
-
-## Purpose
-
-This project is designed to help anyone learn mathematics and test their skills.
+## Introduction
+QuickMathes is a lightweight and easy-to-use tool for performing various mathematical operations. Whether you need basic arithmetic or more complex calculations, QuickMathes has you covered.
 
 ## Features
+- Basic arithmetic operations (addition, subtraction, multiplication, division)
+- Advanced mathematical functions (trigonometry, logarithms, etc.)
+- User-friendly interface
+- Lightweight and fast
 
-- Provides immediate feedback on your answers.
-- Tracks the time taken to complete the exercises.
-- Displays your accuracy and the number of correct and incorrect answers at the end.
-- Allows you to choose the number of questions to answer.
-- You can choose which operator to practice.
+## Usage
+To use QuickMathes, right click on the index.html then open with live server
+Follow the on-screen instructions to perform your desired calculations.
+
+## Contributing
+We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) to get started.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+## Countdown Timer
+
+QuickMathes includes a countdown timer feature for each question to help you manage your time efficiently. This feature ensures that you stay on track and complete your calculations within a specified time limit.
+
+### How to Use the Countdown Timer
+
+1. Start QuickMathes by running the following command:
+    ```bash
+    npm start
+    ```
+2. When prompted with a question, the countdown timer will automatically start.
+3. You will have a limited amount of time to answer each question. The remaining time will be displayed on the screen.
+4. If the time runs out, the question will be marked as unanswered, and you will move on to the next question.
+
+This feature is particularly useful for timed quizzes and practice sessions, helping you improve your speed and accuracy in mathematical calculations.
