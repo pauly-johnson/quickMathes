@@ -1,0 +1,34 @@
+# Quick Maths
+
+A brief description of what this project does and who it's for.
+
+## Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/quickMathes.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd quickMathes
+   ```
+3. Open the project in Visual Studio Code:
+   ```sh
+   code .
+   ```
+4. Install the necessary dependencies:
+   ```sh
+   npm install
+   ```
+
+## Purpose
+
+This project is designed to help anyone learn mathematics and test their skills.
+
+## Features
+
+- Provides immediate feedback on your answers.
+- Tracks the time taken to complete the exercises.
+- Displays your accuracy and the number of correct and incorrect answers at the end.
+- Allows you to choose the number of questions to answer.
+- You can choose which operator to practice.
