@@ -15,7 +15,7 @@ let result = 0;
 let numberOfQuestions = 0;
 let questionsAttempted = 0;
 let timer;
-let timeElapsed = 0;
+let timeLeft = 5;
 
 //reset quiz
 document.getElementById("restart").addEventListener("click", () => {
@@ -26,7 +26,7 @@ document.getElementById("restart").addEventListener("click", () => {
   messageDisplay.innerHTML = "";
   clearInterval(timer);
   timerDisplay.innerHTML = "";
-  timeElapsed = 0;
+  timeLeft = 5;
 });
 
 //select operator
@@ -47,7 +47,6 @@ document.getElementById("start").addEventListener("click", () => {
     );
     questionsTotal.innerHTML = numberOfQuestions;
     questionsCorrect.innerHTML = 0;
-    startTimer();
     generateQuestion();
   }
 });
@@ -55,7 +54,6 @@ document.getElementById("start").addEventListener("click", () => {
 function generateQuestion() {
   if (questionsAttempted === numberOfQuestions) {
     // alert("Quiz Completed");
-    document.getElementById("timeTaken").innerHTML = `${timeElapsed} seconds`;
     quizDisplay.style.display = "none";
     resultsDisplay.style.display = "block";
     document.getElementById("correct").innerHTML = questionsCorrect.innerHTML;
@@ -64,11 +62,12 @@ function generateQuestion() {
     document.getElementById("accuracy").innerHTML = `${(
       (parseFloat(questionsCorrect.innerHTML) / numberOfQuestions) *
       100
-    ).toFixed(1)}%`;
+    ).toFixed(0)}%`;
     clearInterval(timer);
   } else {
     pram1 = Math.floor(Math.random() * 100);
     pram2 = Math.floor(Math.random() * 100);
+    startTimer();
 
     if (operator === "/") {
       while (
@@ -129,10 +128,16 @@ function checkResult() {
 }
 // Timer
 function startTimer() {
-  timeElapsed = 0;
-  timerDisplay.innerHTML = timeElapsed;
+  timeLeft = 5;
+  timerDisplay.innerHTML = timeLeft;
+  clearInterval(timer);
   timer = setInterval(() => {
-    timeElapsed++;
-    timerDisplay.innerHTML = timeElapsed;
+    timeLeft--;
+    timerDisplay.innerHTML = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      questionsAttempted++;
+      generateQuestion();
+    }
   }, 1000);
 }
