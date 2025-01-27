@@ -17,6 +17,7 @@ let numberOfQuestions = 0;
 let questionsAttempted = 0;
 let timer;
 let timeLeft = 5;
+let difficulty = "easy";
 
 //reset quiz
 document.getElementById("restart").addEventListener("click", () => {
@@ -38,6 +39,14 @@ document.querySelectorAll(".operator-btn").forEach((button) => {
     questionDisplay.style.display = "block";
   });
 });
+
+//select difficulty
+document.querySelectorAll(".difficulty-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    difficulty = button.value;
+  });
+});
+
 //start quiz
 document.getElementById("start").addEventListener("click", () => {
   if (parseFloat(document.getElementById("questionsNum").value) > 0) {
@@ -57,6 +66,7 @@ function generateQuestion() {
     // alert("Quiz Completed");
     quizDisplay.style.display = "none";
     resultsDisplay.style.display = "block";
+    messageDisplay.innerHTML = "";
     document.getElementById("correct").innerHTML = questionsCorrect.innerHTML;
     document.getElementById("incorrect").innerHTML =
       numberOfQuestions - parseFloat(questionsCorrect.innerHTML);
@@ -64,6 +74,7 @@ function generateQuestion() {
       (parseFloat(questionsCorrect.innerHTML) / numberOfQuestions) *
       100
     ).toFixed(0)}%`;
+    document.getElementById("level").innerHTML = difficulty;
     clearInterval(timer);
   } else {
     pram1 = Math.floor(Math.random() * 100);
@@ -141,7 +152,7 @@ function checkResult() {
 }
 // Timer
 function startTimer() {
-  timeLeft = 5;
+  timeLeft = getTimeForDifficulty(difficulty);
   timerDisplay.innerHTML = timeLeft;
   clearInterval(timer);
   timer = setInterval(() => {
@@ -149,8 +160,21 @@ function startTimer() {
     timerDisplay.innerHTML = timeLeft;
     if (timeLeft <= 0) {
       clearInterval(timer);
-      questionsAttempted++;
-      generateQuestion();
+      handleNextQuestion();
     }
   }, 1000);
+}
+
+//difficulty
+function getTimeForDifficulty(difficulty) {
+  switch (difficulty) {
+    case "easy":
+      return 10;
+    case "medium":
+      return 8;
+    case "hard":
+      return 5;
+    default:
+      return 5;
+  }
 }

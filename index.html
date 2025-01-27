@@ -1,43 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mathes</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <h1>How good is your mathes</h1>
-        <div class="operators">
-            <p>Select your operator</p>
-            <button class="operator-btn" id="addition" value="+">+</button>
-            <button class="operator-btn" id="subtraction" value="-">-</button>
-            <button class="operator-btn" id="multiplication" value="*">*</button>
-            <button class="operator-btn" id="division" value="/">/</button>
+      <h1>How good is your mathes</h1>
+      <div class="operators">
+        <div class="difficulty">
+          <p>Select your difficulty</p>
+          <button class="difficulty-btn" id="easy" value="easy">Easy</button>
+          <button class="difficulty-btn" id="medium" value="medium">
+            Medium
+          </button>
+          <button class="difficulty-btn" id="hard" value="hard">Hard</button>
         </div>
-        <div class="questions">
-            <p>How many questions do you want to answer?</p>
-            <input type="number" id="questionsNum" value="0" placeholder="Enter number of questions">
-            <button id="start">Start</button>
-        </div>
-        <div></div>
-        <div class="quiz">
-            <div id="timerDisplay"></div>
-            <p class="question"></p>
-            <input type="number" id="userAnswer" placeholder="Enter your answer">
-            <button id="next">Next</button>
-            <p id="messageDisplay"></p>
-            <h2><span id="questionsCompleted">3</span>/<span id="questionsTotal">10</span> Correct</h2>
-        </div>
-        <div class="resultsDisplay">
-            <h2>Results</h2>
-            <p>Correct: <span id="correct">0</span></p>
-            <p>Incorrect: <span id="incorrect">0</span></p>
-            <p>Accuracy: <span id="accuracy">0%</span></p>
-            <button id="restart">Restart</button>
-        </div>
+        <p>Select your operator</p>
+        <button class="operator-btn" id="addition" value="+">+</button>
+        <button class="operator-btn" id="subtraction" value="-">-</button>
+        <button class="operator-btn" id="multiplication" value="*">*</button>
+        <button class="operator-btn" id="division" value="/">/</button>
+      </div>
+      <div class="questions">
+        <p>How many questions do you want to answer?</p>
+        <input
+          type="number"
+          id="questionsNum"
+          value="0"
+          placeholder="Enter number of questions"
+        />
+        <button id="start">Start</button>
+      </div>
+      <div></div>
+      <div class="quiz">
+        <div id="timerDisplay"></div>
+        <p class="question"></p>
+        <input type="number" id="userAnswer" placeholder="Enter your answer" />
+        <button id="next">Next</button>
+        <p id="messageDisplay"></p>
+        <h2>
+          <span id="questionsCompleted">3</span>/<span id="questionsTotal"
+            >10</span
+          >
+          Correct
+        </h2>
+      </div>
+      <div class="resultsDisplay">
+        <h2>Results</h2>
+        <p>Level: <span id="level">easy</span></p>
+        <p>Correct: <span id="correct">0</span></p>
+        <p>Incorrect: <span id="incorrect">0</span></p>
+        <p>Accuracy: <span id="accuracy">0%</span></p>
+        <button id="restart">Restart</button>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
