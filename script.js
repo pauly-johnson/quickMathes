@@ -8,6 +8,7 @@ const questionsTotal = document.getElementById("questionsTotal");
 const messageDisplay = document.getElementById("messageDisplay");
 const timerDisplay = document.getElementById("timerDisplay");
 const userAnswerInput = document.getElementById("userAnswer");
+const difficultyDisplay = document.querySelector(".difficulty");
 
 let operator = "";
 let pram1 = 0;
@@ -17,11 +18,11 @@ let numberOfQuestions = 0;
 let questionsAttempted = 0;
 let timer;
 let timeLeft = 5;
-let difficulty = "easy";
+let difficulty = "hard";
 
 //reset quiz
 document.getElementById("restart").addEventListener("click", () => {
-  operatorDisplay.style.display = "block";
+  difficultyDisplay.style.display = "flex";
   resultsDisplay.style.display = "none";
   questionsAttempted = 0;
   questionsCorrect.innerHTML = 0;
@@ -36,7 +37,7 @@ document.querySelectorAll(".operator-btn").forEach((button) => {
   button.addEventListener("click", () => {
     operator = button.value;
     operatorDisplay.style.display = "none";
-    questionDisplay.style.display = "block";
+    questionDisplay.style.display = "flex";
   });
 });
 
@@ -44,13 +45,15 @@ document.querySelectorAll(".operator-btn").forEach((button) => {
 document.querySelectorAll(".difficulty-btn").forEach((button) => {
   button.addEventListener("click", () => {
     difficulty = button.value;
+    difficultyDisplay.style.display = "none";
+    operatorDisplay.style.display = "flex";
   });
 });
 
 //start quiz
 document.getElementById("start").addEventListener("click", () => {
   if (parseFloat(document.getElementById("questionsNum").value) > 0) {
-    quizDisplay.style.display = "block";
+    quizDisplay.style.display = "flex";
     questionDisplay.style.display = "none";
     numberOfQuestions = parseFloat(
       document.getElementById("questionsNum").value
@@ -65,7 +68,7 @@ function generateQuestion() {
   if (questionsAttempted === numberOfQuestions) {
     // alert("Quiz Completed");
     quizDisplay.style.display = "none";
-    resultsDisplay.style.display = "block";
+    resultsDisplay.style.display = "flex";
     messageDisplay.innerHTML = "";
     document.getElementById("correct").innerHTML = questionsCorrect.innerHTML;
     document.getElementById("incorrect").innerHTML =
