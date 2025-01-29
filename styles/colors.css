@@ -1,0 +1,9 @@
+
+:root {
+    --color-header: #233d4d;
+    --color-background: #fe7f2d;
+    --color-buttons: #fcca46;
+    --color-correct-answer: #a1c181;
+    --color-incorrect-answer: #ff0000;
+    --color-highlight: #619b8a; 
+}
