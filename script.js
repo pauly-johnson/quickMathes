@@ -60,7 +60,11 @@ document.getElementById("start").addEventListener("click", () => {
     );
     questionsTotal.innerHTML = numberOfQuestions;
     questionsCorrect.innerHTML = 0;
+    document.getElementById("questionsNum").value = "";
     generateQuestion();
+  } else {
+    alert("Please enter a valid number of questions");
+    document.getElementById("questionsNum").value = "";
   }
 });
 //generate question
