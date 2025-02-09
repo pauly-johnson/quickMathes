@@ -20,6 +20,7 @@ body {
     padding: .3em;
     text-shadow: 3px 2px 5px white;
     margin: 20px;
+    text-align: center;
 }
 p {
     font-size: 1.5em;
@@ -35,8 +36,8 @@ p {
 .operatorBtnDiv {
     display: flex;
     flex-wrap: wrap;
-    height: 130px;
-    width: 120px;
+    height: 200px;
+    width: 300px;
     margin-top: 20px;
 }
 .questions {
@@ -53,7 +54,7 @@ button {
     background-color: var(--color-buttons);
     border: none;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 1.5em;
     font-weight: 700;
     padding: .5em;
     margin: 10px;

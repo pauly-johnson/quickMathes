@@ -104,7 +104,13 @@ function generateQuestion() {
         pram2 = Math.floor(Math.random() * 100);
       }
     } else if (operator === "*") {
-      while (pram1 === 0 || pram2 === 0 || pram1 > 14 || pram2 > 14 || pram1 === 1) {
+      while (
+        pram1 === 0 ||
+        pram2 === 0 ||
+        pram1 > 13 ||
+        pram2 > 13 ||
+        pram1 === 1
+      ) {
         pram1 = Math.floor(Math.random() * 100);
         pram2 = Math.floor(Math.random() * 100);
       }
@@ -123,7 +129,7 @@ function generateQuestion() {
 function handleNextQuestion() {
   checkResult();
   console.log(result, parseFloat(userAnswerInput.value));
-  
+
   if (result === parseFloat(userAnswerInput.value)) {
     questionsCorrect.innerHTML = parseFloat(questionsCorrect.innerHTML) + 1;
     messageDisplay.innerHTML = "Correct !!! Great work";
@@ -138,12 +144,12 @@ document.getElementById("next").addEventListener("click", () => {
   handleNextQuestion();
   userAnswerInput.value = "";
 });
-userAnswerInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
+userAnswerInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
     handleNextQuestion();
     userAnswerInput.value = "";
   }
-})
+});
 
 //check result
 function checkResult() {
@@ -175,6 +181,8 @@ function startTimer() {
 //difficulty
 function getTimeForDifficulty(difficulty) {
   switch (difficulty) {
+    case "really-easy":
+      return 20;
     case "easy":
       return 10;
     case "medium":
