@@ -20,6 +20,27 @@ let timer;
 let timeLeft = 5;
 let difficulty = "hard";
 
+async function saveScore(score) {
+  try {
+    const response = await fetch('/.netlify/functions/save-score', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(score),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data.message);
+  } catch (error) {
+    console.error('Error saving score:', error);
+  }
+}
+
 //reset quiz
 document.getElementById("restart").addEventListener("click", () => {
   difficultyDisplay.style.display = "flex";
@@ -82,6 +103,23 @@ function generateQuestion() {
       100
     ).toFixed(0)}%`;
     document.getElementById("level").innerHTML = difficulty;
+
+// Save the score
+const score = {
+  user: 'John Doe', // Replace with actual user data if available
+  correctAnswers: parseFloat(questionsCorrect.innerHTML),
+  totalQuestions: numberOfQuestions,
+  accuracy: `${(
+    (parseFloat(questionsCorrect.innerHTML) / numberOfQuestions) *
+    100
+  ).toFixed(1)}%`,
+};
+
+saveScore(score);
+
+console.log(score);
+
+
     clearInterval(timer);
   } else {
     pram1 = Math.floor(Math.random() * 100);
