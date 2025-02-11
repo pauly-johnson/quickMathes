@@ -22,7 +22,7 @@ let difficulty = "hard";
 
 async function saveScore(score) {
   try {
-    const response = await fetch('/.netlify/functions/save-score', {
+    const response = await fetch('/.netlify/functions-internal/save-score', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
