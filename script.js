@@ -20,27 +20,6 @@ let timer;
 let timeLeft = 5;
 let difficulty = "hard";
 
-async function saveScore(score) {
-  try {
-    const response = await fetch('/.netlify/functions-internal/save-score.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(score),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log(data.message);
-  } catch (error) {
-    console.error('Error saving score:', error);
-  }
-}
-
 //reset quiz
 document.getElementById("restart").addEventListener("click", () => {
   difficultyDisplay.style.display = "flex";
@@ -72,22 +51,35 @@ document.querySelectorAll(".difficulty-btn").forEach((button) => {
 });
 
 //start quiz
-document.getElementById("start").addEventListener("click", () => {
-  if (parseFloat(document.getElementById("questionsNum").value) > 0) {
+// document.getElementById("start").addEventListener("click", () => {
+//   if (parseFloat(document.getElementById("questionsNum").value) > 0) {
+//     quizDisplay.style.display = "flex";
+//     questionDisplay.style.display = "none";
+//     numberOfQuestions = parseFloat(
+//       document.getElementById("questionsNum").value
+//     );
+//     questionsTotal.innerHTML = numberOfQuestions;
+//     questionsCorrect.innerHTML = 0;
+//     document.getElementById("questionsNum").value = "";
+//     generateQuestion();
+//   } else {
+//     alert("Please enter a valid number of questions");
+//     document.getElementById("questionsNum").value = "";
+//   }
+// });
+document.querySelectorAll('.question-btn').forEach((button) => {
+  button.addEventListener('click', () => {
+    numberOfQuestions = parseFloat(button.value);
+    console.log(numberOfQuestions);
     quizDisplay.style.display = "flex";
     questionDisplay.style.display = "none";
-    numberOfQuestions = parseFloat(
-      document.getElementById("questionsNum").value
-    );
     questionsTotal.innerHTML = numberOfQuestions;
     questionsCorrect.innerHTML = 0;
-    document.getElementById("questionsNum").value = "";
     generateQuestion();
-  } else {
-    alert("Please enter a valid number of questions");
-    document.getElementById("questionsNum").value = "";
-  }
-});
+  });
+}
+);
+
 //generate question
 function generateQuestion() {
   if (questionsAttempted === numberOfQuestions) {
@@ -115,7 +107,6 @@ const score = {
   ).toFixed(1)}%`,
 };
 
-saveScore(score);
 
 console.log(score);
 
